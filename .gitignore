@@ -1,0 +1,13 @@
+# Terraform specific files
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# Packer specific files
+packer_cache/
+
+# General files
+*.log
+*.bak
+*.swp
+.DS_Store
