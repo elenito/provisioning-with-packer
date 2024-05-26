@@ -1,0 +1,35 @@
+name: Packer Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Packer
+        uses: hashicorp/setup-packer@v1
+
+      - name: Build AWS Image
+        run: |
+          cd packer/aws
+          packer init .
+          packer build .
+
+      - name: Build GCP Image
+        run: |
+          cd packer/gcp
+          packer init .
+          packer build .
+
+      - name: Build Azure Image
+        run: |
+          cd packer/azure
+          packer init .
+          packer build .
